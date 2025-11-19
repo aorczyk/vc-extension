@@ -1,7 +1,5 @@
-//% color=#f68420 icon="\uf11b" block="Controller"
+//% color=#3c4043 icon="\uf11b" block="Controller"
 namespace vcController {
-    let commadParts: string[] = []
-    let command: string;
     let latestCommands: { [key: string]: number } = {}
     let commandName: string;
     let commandValue: number;
@@ -9,6 +7,8 @@ namespace vcController {
     bluetooth.startUartService()
 
     bluetooth.onUartDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+        let commadParts: string[] = []
+        let command: string;
         command = bluetooth.uartReadUntil(serial.delimiters(Delimiters.NewLine))
         commadParts = command.split("=")
         latestCommands[commadParts[0]] = parseFloat(commadParts[1])
