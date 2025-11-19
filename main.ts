@@ -1,4 +1,4 @@
-//% color=#f68420 icon="\uf1eb" block="Controller"
+//% color=#f68420 icon="\uf11b" block="Controller"
 namespace vcController {
     bluetooth.onBluetoothConnected(function () {
 
