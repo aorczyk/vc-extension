@@ -45,7 +45,7 @@ namespace vcController {
      * Returns selected command name.
      */
     //% blockId=vc_set_command_name
-    //% block="selected input: %inputName"
+    //% block="input: %inputName
     //% weight=50
     export function setCommandName(inputName: InputName) {
         return inputName == commandName
