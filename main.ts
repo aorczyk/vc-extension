@@ -43,6 +43,7 @@ namespace vcController {
 
     /**
      * Returns selected command name.
+     * @param inputName the PF receiver output, eg: PfOutput.Red
      */
     //% blockId=vc_set_command_name
     //% block="input: %inputName"
