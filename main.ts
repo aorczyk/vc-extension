@@ -34,6 +34,23 @@ namespace vcController {
         return commandValue
     }
 
+    const enum InputName {
+        //% block="Right Slider"
+        RightSlider = 'sr',
+        //% block="Left Slider"
+        LeftSlider = 'sl',
+    }
+
+    /**
+     * Returns selected command name.
+     */
+    //% blockId=vc_set_command_name
+    //% block="selected input: %inputName"
+    //% weight=50
+    export function setCommandName(inputName: InputName) {
+        return inputName == commandName
+    }
+
     //% blockId="vc_on_command"
     //% block="On command received"
     export function onVCcommand(
