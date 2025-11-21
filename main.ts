@@ -43,7 +43,7 @@ const enum KeyState {
     Released = 0,
 }
 
-//% color=#485fc7 icon="\uf11b" block="Controller"
+//% color=#485fc7 icon="\uf11b" block="My Controller"
 namespace vcController {
     let latestCommands: { [key: string]: number } = {}
     let commandName: string;
@@ -68,6 +68,9 @@ namespace vcController {
         latestCommands[commadParts[0]] = parseFloat(commadParts[1])
     })
 
+    /**
+     * Runs the code inside when a command is received.
+     */
     //% blockId="vc_on_command"
     //% block="On command received"
     //% weight=90
@@ -110,7 +113,7 @@ namespace vcController {
     }
 
     /**
-     * Key pressed.
+     * Checks whether the selected key is in the chosen state.
      */
     //% blockId=vc_is_key
     //% block="%keyCode key %keyState"
@@ -157,7 +160,7 @@ namespace vcController {
      * Check command comes from joystick.
      */
     //% blockId=vc_is_joystick
-    //% block="%InputSide joystick direction %InputDirection"
+    //% block="%InputSide joystick %InputDirection direction"
     //% weight=69
     export function isJoystick(inputSide: InputSide, inputDirection: InputDirection) {
         return commandName == (inputSide == 1 ? 'jr' : 'jl') + (inputDirection == 1 ? 'x' : 'y')
@@ -186,7 +189,7 @@ namespace vcController {
     }
 
     /**
-     * Returns command name.
+     * Command name.
      */
     //% blockId=vc_command_name
     //% block="command name"
@@ -196,7 +199,7 @@ namespace vcController {
     }
 
     /**
-     * Returns command value.
+     * Command value.
      */
     //% blockId=vc_command_value
     //% block="command value"
