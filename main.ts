@@ -113,7 +113,7 @@ namespace vcController {
     }
 
     /**
-     * Checks whether the selected key is in the chosen state.
+     * Returns true if the selected key is in the chosen state.
      */
     //% blockId=vc_is_key
     //% block="%keyCode key %keyState"
@@ -123,13 +123,23 @@ namespace vcController {
     }
 
     /**
-     * Checks whether the selected key is in the chosen state.
+     * Returns true if the selected key is in the chosen state.
      */
     //% blockId=vc_is_special_key
     //% block="%keyCode is %keyState"
     //% weight=88
     export function isSpecialKey(keyCode: KeyCode, keyState: KeyState) {
         return commandName == (keyState ? '' : '!') + KeyCodeLabel[keyCode]
+    }
+
+    /**
+     * Returns true if all keys are released.
+     */
+    //% blockId=vc_are_all_keys_released
+    //% block="%keyCode is %keyState"
+    //% weight=88
+    export function areAllKeysReleased() {
+        return commandName == 'none'
     }
 
     /**
