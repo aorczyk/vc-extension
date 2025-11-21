@@ -96,13 +96,14 @@ namespace vcController {
                     rightJoystickValueY = commandValue
                 }
 
-                // if (commandName == "-v") {
+                if (commandName == "jlx") {
+                    leftJoystickValueX = commandValue
+                }
 
-                // } else if (commandName == "oy" || commandName == "sl" || commandName == "jry") {
+                if (commandName == "jly") {
+                    leftJoystickValueY = commandValue
+                }
 
-                // } else if (commandName == "ox" || commandName == "sr" || commandName == "jrx") {
-
-                // }
                 handler()
             }
         })
@@ -218,4 +219,6 @@ namespace vcController {
     export function isKey(keyCode: string, keyState: KeyState) {
         return commandName == (keyState ? '' : '!') + keyCode.toLowerCase()
     }
+
+    // "[Enter] key code"
 }
