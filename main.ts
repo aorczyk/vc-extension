@@ -137,7 +137,7 @@ namespace vcController {
      */
     //% blockId=vc_are_all_keys_released
     //% block="all keys released"
-    //% weight=88
+    //% weight=87
     export function areAllKeysReleased() {
         return commandName == 'none'
     }
@@ -147,7 +147,7 @@ namespace vcController {
      */
     //% blockId=vc_key_code_value
     //% block="code of %keyCode key"
-    //% weight=87
+    //% weight=86
     // export function getKeyCodeValue(keyCode: KeyCode) {
     //     return KeyCodeLabel[keyCode]
     // }
