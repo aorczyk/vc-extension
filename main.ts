@@ -70,6 +70,7 @@ namespace vcController {
 
     //% blockId="vc_on_command"
     //% block="On command received"
+    //% weight=90
     export function onVCcommand(
         handler: () => void
     ) {
@@ -109,17 +110,33 @@ namespace vcController {
     }
 
     /**
+     * Key pressed.
+     */
+    //% blockId=vc_is_key
+    //% block="%keyCode key %keyState"
+    //% weight=89
+    export function isKey(keyCode: string, keyState: KeyState) {
+        return commandName == (keyState ? '' : '!') + keyCode.toLowerCase()
+    }
+
+    /**
+     * Key code value.
+     */
+    //% blockId=vc_key_code_value
+    //% block="%keyCode key code"
+    //% weight=88
+    export function getKeyCodeValue(keyCode: KeyCode) {
+        return KeyCodeLabel[keyCode]
+    }
+
+    /**
      * Check command comes from slider.
      */
     //% blockId=vc_is_slider
     //% block="%InputSide slider"
     //% weight=50
     export function isSlider(inputSide: InputSide) {
-        let sideMap = {
-            1: 'sr',
-            2: 'sl'
-        }
-        return commandName == sideMap[inputSide]
+        return commandName == (inputSide == 1 ? 'sr' : 'sl')
     }
 
     /**
@@ -140,15 +157,10 @@ namespace vcController {
      * Check command comes from joystick.
      */
     //% blockId=vc_is_joystick
-    //% block="%InputSide joystick"
+    //% block="%InputSide joystick direction %InputDirection"
     //% weight=50
-    export function isJoystick(inputSide: InputSide) {
-        let sideMap = {
-            1: 'jr',
-            2: 'jl'
-        }
-
-        return commandName == sideMap[inputSide] + 'x' || commandName == sideMap[inputSide] + 'y'
+    export function isJoystick(inputSide: InputSide, inputDirection: InputDirection) {
+        return commandName == (inputSide == 1 ? 'jr' : 'jl') + (inputDirection == 1 ? 'x' : 'y')
     }
 
     /**
@@ -191,27 +203,5 @@ namespace vcController {
     //% weight=50
     export function getCommandValue() {
         return commandValue
-    }
-
-    /**
-     * Key pressed.
-     */
-    //% blockId=vc_is_key
-    //% block="%keyCode key %keyState"
-    //% weight=50
-    export function isKey(keyCode: string, keyState: KeyState) {
-        return commandName == (keyState ? '' : '!') + keyCode.toLowerCase()
-    }
-
-    // "[Enter] key code"
-
-    /**
-     * Key code value.
-     */
-    //% blockId=vc_key_code_value
-    //% block="%keyCode key code"
-    //% weight=50
-    export function getKeyCodeValue(keyCode: KeyCode) {
-        return KeyCodeLabel[keyCode]
     }
 }
