@@ -123,7 +123,7 @@ namespace vcController {
      * Key code value.
      */
     //% blockId=vc_key_code_value
-    //% block="%keyCode key code"
+    //% block="code of %keyCode key"
     //% weight=88
     export function getKeyCodeValue(keyCode: KeyCode) {
         return KeyCodeLabel[keyCode]
@@ -134,7 +134,7 @@ namespace vcController {
      */
     //% blockId=vc_is_slider
     //% block="%InputSide slider"
-    //% weight=50
+    //% weight=79
     export function isSlider(inputSide: InputSide) {
         return commandName == (inputSide == 1 ? 'sr' : 'sl')
     }
@@ -144,7 +144,7 @@ namespace vcController {
      */
     //% blockId=vc_slider_value
     //% block="%InputSide slider value"
-    //% weight=50
+    //% weight=78
     export function getSliderValue(inputSide: InputSide) {
         if (inputSide == 1) {
             return rightSliderValue
@@ -158,7 +158,7 @@ namespace vcController {
      */
     //% blockId=vc_is_joystick
     //% block="%InputSide joystick direction %InputDirection"
-    //% weight=50
+    //% weight=69
     export function isJoystick(inputSide: InputSide, inputDirection: InputDirection) {
         return commandName == (inputSide == 1 ? 'jr' : 'jl') + (inputDirection == 1 ? 'x' : 'y')
     }
@@ -168,7 +168,7 @@ namespace vcController {
      */
     //% blockId=vc_joystick_value
     //% block="%InputSide joystick %InputDirection value"
-    //% weight=50
+    //% weight=68
     export function getJoystickValue(inputSide: InputSide, inputDirection: InputDirection) {
         if (inputSide == 1) {
             if (inputDirection == 1) {
@@ -190,7 +190,7 @@ namespace vcController {
      */
     //% blockId=vc_command_name
     //% block="command name"
-    //% weight=50
+    //% weight=59
     export function getCommandName() {
         return commandName
     }
@@ -200,7 +200,7 @@ namespace vcController {
      */
     //% blockId=vc_command_value
     //% block="command value"
-    //% weight=50
+    //% weight=58
     export function getCommandValue() {
         return commandValue
     }
