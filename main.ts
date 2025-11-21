@@ -126,7 +126,7 @@ namespace vcController {
      * Checks whether the selected key is in the chosen state.
      */
     //% blockId=vc_is_special_key
-    //% block="%keyCode key %keyState"
+    //% block="%keyCode is %keyState"
     //% weight=88
     export function isSpecialKey(keyCode: KeyCode, keyState: KeyState) {
         return commandName == (keyState ? '' : '!') + KeyCodeLabel[keyCode]
