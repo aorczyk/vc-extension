@@ -31,10 +31,17 @@ const enum InputSide {
 }
 
 const enum InputDirection {
-    //% block="x"
+    //% block="X"
     x = 1,
-    //% block="y"
+    //% block="X"
     y = 2,
+}
+
+const enum KeyState {
+    //% block="pressed"
+    Pressed = 1,
+    //% block="released"
+    Released = 0,
 }
 
 //% color=#485fc7 icon="\uf11b" block="Controller"
@@ -199,5 +206,16 @@ namespace vcController {
     //% weight=50
     export function setCommandName(inputName: InputName) {
         return commandName == InputNameLabel[inputName]
+    }
+
+
+    /**
+     * Key pressed.
+     */
+    //% blockId=vc_is_key
+    //% block="key %InputSide"
+    //% weight=50
+    export function isKey(keyCode: string, keyState: KeyState) {
+        return commandName == (keyState ? '' : '!') + keyCode
     }
 }
