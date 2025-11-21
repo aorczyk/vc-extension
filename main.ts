@@ -22,31 +22,6 @@ const KeyCodeLabel: { [n: number]: string } = {
     [KeyCode.Space]: "space",
 }
 
-const enum InputName {
-    //% block="Right Arrows"
-    RightArrows = 1,
-    //% block="Right Slider"
-    RightSlider = 2,
-    //% block="Right Joystick"
-    RightJoystick = 3,
-    //% block="Left Arrows"
-    LeftArrows = -1,
-    //% block="Left Slider"
-    LeftSlider = -2,
-    //% block="Left Joystick"
-    LeftJoystick = -3,
-}
-
-const InputNameLabel: { [n: number]: string } = {
-    [InputName.RightArrows]: "ar",
-    [InputName.RightSlider]: "sr",
-    [InputName.RightJoystick]: "jr",
-
-    [InputName.LeftArrows]: "al",
-    [InputName.LeftSlider]: "sl",
-    [InputName.LeftJoystick]: "jl",
-};
-
 const enum InputSide {
     //% block="right"
     Right = 1,
@@ -217,17 +192,6 @@ namespace vcController {
     export function getCommandValue() {
         return commandValue
     }
-
-    /**
-     * Returns selected command name.
-     */
-    //% blockId=vc_set_command_name
-    //% block="input type: %inputName"
-    //% weight=50
-    export function setCommandName(inputName: InputName) {
-        return commandName == InputNameLabel[inputName]
-    }
-
 
     /**
      * Key pressed.
