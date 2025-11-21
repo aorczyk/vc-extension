@@ -116,26 +116,6 @@ namespace vcController {
     }
 
     /**
-     * Right slider value.
-     */
-    //% blockId=vc_right_slider_value
-    //% block="right slider value"
-    //% weight=50
-    export function getRightSliderValue() {
-        return rightSliderValue
-    }
-
-    /**
-     * Left slider value.
-     */
-    //% blockId=vc_left_slider_value
-    //% block="left slider value"
-    //% weight=50
-    export function getLeftSliderValue() {
-        return leftSliderValue
-    }
-
-    /**
      * Slider value.
      */
     //% blockId=vc_slider_value
@@ -167,6 +147,28 @@ namespace vcController {
         }
 
         return commandName == sideMap[inputSide] + directionMap[inputDirection]
+    }
+
+    /**
+     * Joystick value.
+     */
+    //% blockId=vc_joystick_value
+    //% block="%InputSide joystick %InputDirection value"
+    //% weight=50
+    export function getJoystickValue(inputSide: InputSide, inputDirection: InputDirection) {
+        if (inputSide == 1) {
+            if (inputDirection == 1) {
+                return rightJoystickValueX
+            } else {
+                return rightJoystickValueY
+            }
+        } else {
+            if (inputDirection == 1) {
+                return leftJoystickValueX
+            } else {
+                return leftJoystickValueY
+            }
+        }
     }
 
     /**
