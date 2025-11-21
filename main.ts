@@ -213,7 +213,7 @@ namespace vcController {
      * Key pressed.
      */
     //% blockId=vc_is_key
-    //% block="key %InputSide"
+    //% block="%keyCode key %keyState"
     //% weight=50
     export function isKey(keyCode: string, keyState: KeyState) {
         return commandName == (keyState ? '' : '!') + keyCode
