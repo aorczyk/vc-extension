@@ -30,6 +30,13 @@ const enum InputSide {
     Left = 2,
 }
 
+const enum InputDirection {
+    //% block="x"
+    x = 1,
+    //% block="y"
+    y = 2,
+}
+
 //% color=#485fc7 icon="\uf11b" block="Controller"
 namespace vcController {
     let latestCommands: { [key: string]: number } = {}
@@ -45,47 +52,6 @@ namespace vcController {
         commadParts = command.split("=")
         latestCommands[commadParts[0]] = parseFloat(commadParts[1])
     })
-
-    /**
-     * Returns command name.
-     */
-    //% blockId=vc_command_name
-    //% block="command name"
-    //% weight=50
-    export function getCommandName() {
-        return commandName
-    }
-
-    /**
-     * Returns command value.
-     */
-    //% blockId=vc_command_value
-    //% block="command value"
-    //% weight=50
-    export function getCommandValue() {
-        return commandValue
-    }
-
-    /**
-     * Returns command value.
-     */
-    //% blockId=vc_slider_value
-    //% block="slider value"
-    //% weight=50
-    export function getSliderValue() {
-        return commandValue
-    }
-
-
-    /**
-     * Returns selected command name.
-     */
-    //% blockId=vc_set_command_name
-    //% block="input type: %inputName"
-    //% weight=50
-    export function setCommandName(inputName: InputName) {
-        return commandName == InputNameLabel[inputName]
-    }
 
     //% blockId="vc_on_command"
     //% block="On command received"
@@ -114,13 +80,73 @@ namespace vcController {
      * Check command comes from slider.
      */
     //% blockId=vc_is_slider
-    //% block="is slider on the %InputSide"
+    //% block="slider on the %InputSide"
     //% weight=50
     export function isSlider(inputSide: InputSide) {
         let sideMap = {
-            1: 'sl',
-            2: 'sr'
+            1: 'sr',
+            2: 'sl'
         }
         return commandName == sideMap[inputSide]
+    }
+
+    /**
+     * Returns command value.
+     */
+    //% blockId=vc_slider_value
+    //% block="slider value"
+    //% weight=50
+    export function getSliderValue() {
+        return commandValue
+    }
+
+    /**
+     * Check command comes from joystick.
+     */
+    //% blockId=vc_is_joystick
+    //% block="joystick on the %InputSide direction %InputDirection"
+    //% weight=50
+    export function isJoystick(inputSide: InputSide, inputDirection: InputDirection) {
+        let sideMap = {
+            1: 'jr',
+            2: 'jl'
+        }
+
+        let directionMap = {
+            1: 'x',
+            2: 'y'
+        }
+
+        return commandName == sideMap[inputSide] + directionMap[inputDirection]
+    }
+
+    /**
+     * Returns command name.
+     */
+    //% blockId=vc_command_name
+    //% block="command name"
+    //% weight=50
+    export function getCommandName() {
+        return commandName
+    }
+
+    /**
+     * Returns command value.
+     */
+    //% blockId=vc_command_value
+    //% block="command value"
+    //% weight=50
+    export function getCommandValue() {
+        return commandValue
+    }
+
+    /**
+     * Returns selected command name.
+     */
+    //% blockId=vc_set_command_name
+    //% block="input type: %inputName"
+    //% weight=50
+    export function setCommandName(inputName: InputName) {
+        return commandName == InputNameLabel[inputName]
     }
 }
