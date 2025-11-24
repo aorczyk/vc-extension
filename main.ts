@@ -59,6 +59,7 @@ namespace vcController {
     let leftJoystickValueY: number;
 
     let pressedKeys: string[] = [];
+    let setup = () => {};
 
     bluetooth.startUartService()
 
@@ -88,6 +89,10 @@ namespace vcController {
                 commandName = Object.keys(latestCommands)[0]
                 commandValue = latestCommands[commandName]
                 delete latestCommands[commandName];
+
+                if (commandName == '-v') {
+                    setup()
+                }
 
                 if (!commandName.includes(';')) {
                     if (commandName[0] == '!') {
@@ -144,9 +149,9 @@ namespace vcController {
     //% blockId=vc_is_special_key
     //% block="%keyCode is %keyState"
     //% weight=88
-    export function isSpecialKey(keyCode: KeyCode, keyState: KeyState) {
-        return isKey(KeyCodeLabel[keyCode], keyState)
-    }
+    // export function isSpecialKey(keyCode: KeyCode, keyState: KeyState) {
+    //     return isKey(KeyCodeLabel[keyCode], keyState)
+    // }
 
     /**
      * Returns true if all keys are released.
@@ -172,7 +177,7 @@ namespace vcController {
      * True if the command comes from the slider.
      */
     //% blockId=vc_is_slider
-    //% block="%InputSide slider"
+    //% block="%InputSide slider changed"
     //% weight=79
     export function isSlider(inputSide: InputSide) {
         return commandName == (inputSide == 1 ? 'sr' : 'sl')
@@ -242,5 +247,17 @@ namespace vcController {
     //% weight=58
     export function getCommandValue() {
         return commandValue
+    }
+
+    /**
+     * Setup.
+     */
+    //% blockId="vc_setup"
+    //% block="setup"
+    //% weight=50
+    export function onVCsetup(
+        handler: () => void
+    ) {
+        setup = handler;
     }
 }
