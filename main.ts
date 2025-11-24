@@ -91,7 +91,7 @@ namespace vcController {
 
                 if (!commandName.includes(';')) {
                     if (commandName[0] == '!') {
-                        pressedKeys.splice(pressedKeys.indexOf(commandName), 1)
+                        pressedKeys.splice(pressedKeys.indexOf(commandName.slice(1)), 1)
                     } else {
                         pressedKeys.push(commandName)
                     }
