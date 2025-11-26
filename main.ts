@@ -62,19 +62,19 @@ namespace vcController {
     let pressedKeys: string[] = [];
     let setup = () => { };
 
-    let rightSliderValue: number;
-    let leftSliderValue: number;
+    // let rightSliderValue: number;
+    // let leftSliderValue: number;
 
-    let rightJoystickXvalue: number;
-    let rightJoystickYvalue: number;
+    // let rightJoystickXvalue: number;
+    // let rightJoystickYvalue: number;
 
-    let leftJoystickXvalue: number;
-    let leftJoystickYvalue: number;
+    // let leftJoystickXvalue: number;
+    // let leftJoystickYvalue: number;
 
-    let orientationXvalue: number;
-    let orientationYvalue: number;
-    let orientationZvalue: number;
-    let orientationCompassValue: number;
+    // let orientationXvalue: number;
+    // let orientationYvalue: number;
+    // let orientationZvalue: number;
+    // let orientationCompassValue: number;
 
     bluetooth.startUartService()
 
@@ -118,29 +118,29 @@ namespace vcController {
                     }
                 }
 
-                if (commandName == "sr") {
-                    rightSliderValue = commandValue
-                }
+                // if (commandName == "sr") {
+                //     rightSliderValue = commandValue
+                // }
 
-                if (commandName == "sl") {
-                    leftSliderValue = commandValue
-                }
+                // if (commandName == "sl") {
+                //     leftSliderValue = commandValue
+                // }
 
-                if (commandName == "jrx") {
-                    rightJoystickXvalue = commandValue
-                }
+                // if (commandName == "jrx") {
+                //     rightJoystickXvalue = commandValue
+                // }
 
-                if (commandName == "jry") {
-                    rightJoystickYvalue = commandValue
-                }
+                // if (commandName == "jry") {
+                //     rightJoystickYvalue = commandValue
+                // }
 
-                if (commandName == "jlx") {
-                    leftJoystickXvalue = commandValue
-                }
+                // if (commandName == "jlx") {
+                //     leftJoystickXvalue = commandValue
+                // }
 
-                if (commandName == "jly") {
-                    leftJoystickYvalue = commandValue
-                }
+                // if (commandName == "jly") {
+                //     leftJoystickYvalue = commandValue
+                // }
 
                 handler()
             }
@@ -225,13 +225,13 @@ namespace vcController {
     //% blockId=vc_slider_value
     //% block="%InputSide slider value"
     //% weight=78
-    export function getSliderValue(inputSide: InputSide) {
-        if (inputSide == 1) {
-            return rightSliderValue
-        } else {
-            return leftSliderValue
-        }
-    }
+    // export function getSliderValue(inputSide: InputSide) {
+    //     if (inputSide == 1) {
+    //         return rightSliderValue
+    //     } else {
+    //         return leftSliderValue
+    //     }
+    // }
 
     /**
      * Returns true if the specified joystick axis value has changed.
@@ -249,21 +249,21 @@ namespace vcController {
     //% blockId=vc_joystick_value
     //% block="%InputSide joystick %JoystickDirection value"
     //% weight=68
-    export function getJoystickValue(inputSide: InputSide, inputDirection: JoystickDirection) {
-        if (inputSide == 1) {
-            if (inputDirection == 1) {
-                return rightJoystickXvalue
-            } else {
-                return rightJoystickYvalue
-            }
-        } else {
-            if (inputDirection == 1) {
-                return leftJoystickXvalue
-            } else {
-                return leftJoystickYvalue
-            }
-        }
-    }
+    // export function getJoystickValue(inputSide: InputSide, inputDirection: JoystickDirection) {
+    //     if (inputSide == 1) {
+    //         if (inputDirection == 1) {
+    //             return rightJoystickXvalue
+    //         } else {
+    //             return rightJoystickYvalue
+    //         }
+    //     } else {
+    //         if (inputDirection == 1) {
+    //             return leftJoystickXvalue
+    //         } else {
+    //             return leftJoystickYvalue
+    //         }
+    //     }
+    // }
 
     /**
      * Returns true if the specified orientation axis value has changed.
@@ -287,20 +287,20 @@ namespace vcController {
     //% blockId=vc_orientation_value
     //% block="orientation %InputOrientaton value"
     //% weight=66
-    export function getOrientationValue(inputOrient: InputOrientaton) {
-        switch(inputOrient) {
-            case 1:
-                return orientationXvalue;
-            case 2:
-                return orientationYvalue;
-            case 3:
-                return orientationZvalue;
-            case 4:
-                return orientationCompassValue;
-            default:
-                return 0;
-        }
-    }
+    // export function getOrientationValue(inputOrient: InputOrientaton) {
+    //     switch(inputOrient) {
+    //         case 1:
+    //             return orientationXvalue;
+    //         case 2:
+    //             return orientationYvalue;
+    //         case 3:
+    //             return orientationZvalue;
+    //         case 4:
+    //             return orientationCompassValue;
+    //         default:
+    //             return 0;
+    //     }
+    // }
 
     /**
      * Runs the code inside when the controller connects and sends the setup signal.
