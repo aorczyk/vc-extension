@@ -91,7 +91,8 @@ namespace vcController {
     })
 
     /**
-     * Runs the code inside when a command is received.
+     * Runs the code inside when any command is received from the controller.
+     * Use this block to handle all incoming commands including key presses, slider changes, joystick movements, and orientation updates.
      */
     //% blockId="vc_on_command"
     //% block="on command received"
@@ -147,7 +148,7 @@ namespace vcController {
     }
 
     /**
-     * Command name.
+     * Returns the name of the most recently received command.
      */
     //% blockId=vc_command_name
     //% block="command name"
@@ -157,7 +158,7 @@ namespace vcController {
     }
 
     /**
-     * Command value.
+     * Returns the value of the most recently received command.
      */
     //% blockId=vc_command_value
     //% block="command value"
@@ -167,7 +168,7 @@ namespace vcController {
     }
 
     /**
-     * Returns true if the selected key is in the chosen state.
+     * Returns true if the specified key is in the chosen state.
      */
     //% blockId=vc_is_key
     //% block="%keyCode key %keyState"
@@ -189,7 +190,7 @@ namespace vcController {
     // }
 
     /**
-     * Key code value.
+     * Returns the string code for the specified key.
      */
     //% blockId=vc_key_code_value
     //% block="code of %keyCode key"
@@ -199,7 +200,7 @@ namespace vcController {
     }
 
     /**
-     * Returns true if all keys are released.
+     * Returns true if all keys have been released.
      */
     //% blockId=vc_are_all_keys_released
     //% block="all keys released"
@@ -209,7 +210,7 @@ namespace vcController {
     }
 
     /**
-     * True if the command comes from the slider.
+     * Returns true if the specified slider value has changed.
      */
     //% blockId=vc_is_slider
     //% block="%InputSide slider changed"
@@ -219,7 +220,7 @@ namespace vcController {
     }
 
     /**
-     * Slider value.
+     * Returns the value of the specified slider.
      */
     //% blockId=vc_slider_value
     //% block="%InputSide slider value"
@@ -233,7 +234,7 @@ namespace vcController {
     }
 
     /**
-     * True if the command comes from the joystick.
+     * Returns true if the specified joystick axis value has changed.
      */
     //% blockId=vc_is_joystick
     //% block="%InputSide joystick %JoystickDirection changed"
@@ -243,7 +244,7 @@ namespace vcController {
     }
 
     /**
-     * Joystick value.
+     * Returns the value of the specified joystick axis.
      */
     //% blockId=vc_joystick_value
     //% block="%InputSide joystick %JoystickDirection value"
@@ -265,7 +266,7 @@ namespace vcController {
     }
 
     /**
-     * True if the command comes from the accelerometer.
+     * Returns true if the specified orientation axis value has changed.
      */
     //% blockId=vc_is_orientation
     //% block="orientation %InputOrientaton changed"
@@ -281,7 +282,7 @@ namespace vcController {
     }
 
     /**
-     * Orientation value.
+     * Returns the value of the specified orientation axis.
      */
     //% blockId=vc_orientation_value
     //% block="orientation %InputOrientaton value"
@@ -302,12 +303,14 @@ namespace vcController {
     }
 
     /**
-     * Setup.
+     * Runs the code inside when the controller connects and sends the setup signal.
      */
     //% blockId="vc_setup"
-    //% block="setup"
+    //% block="setup | require confirmation %requireConfirmation"
     //% weight=50
+    //% requireConfirmation.defl=false
     export function onVCsetup(
+        requireConfirmation: boolean,
         handler: () => void
     ) {
         setup = handler;
