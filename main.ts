@@ -90,7 +90,6 @@ namespace vcController {
         latestCommands[commadParts[0]] = parseFloat(commadParts[1])
     })
 
-
     /**
      * Runs the code inside when a command is received.
      */
@@ -110,7 +109,7 @@ namespace vcController {
                     setup()
                 }
 
-                if (!commandName.includes(';')) {
+                if (commandName.indexOf(';') == -1) {
                     if (commandName[0] == '!') {
                         pressedKeys.splice(pressedKeys.indexOf(commandName.slice(1)), 1)
                     } else {
@@ -301,7 +300,6 @@ namespace vcController {
                 return 0;
         }
     }
-
 
     /**
      * Setup.
