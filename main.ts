@@ -319,4 +319,26 @@ namespace vcController {
     ) {
         setup = handler;
     }
+
+    let buttonStates: { [key: string]: number } = {}
+
+    /**
+     * Runs the code inside when the controller connects and sends the setup signal.
+     */
+    //% blockId="vc_button_toggle"
+    //% block="button toggle %button"
+    //% weight=40
+    export function onVCbuttonToggle(
+        button: string,
+        isOff: () => void,
+        isOn: () => void
+    ) {
+        if (!buttonStates[button]) {
+            buttonStates[button] = 1;
+            isOn();
+        } else {
+            buttonStates[button] = 0;
+            isOff();
+        }
+    }
 }
