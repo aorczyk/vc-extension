@@ -344,8 +344,8 @@ namespace vcController {
     export function onVCbuttonToggleOn(
         keyCode: string,
         handler: () => void
-    ) {
-        return () => {
+    ): () => void {
+        return function() {
             if (isKey(keyCode, 1) && !buttonStates[keyCode]) {
                 buttonStates[keyCode] = 1;
                 handler();
@@ -363,11 +363,9 @@ namespace vcController {
         keyCode: string,
         handler: () => void
     ) {
-        return () => {
-            if (isKey(keyCode, 1) && buttonStates[keyCode]) {
-                buttonStates[keyCode] = 0;
-                handler();
-            }
+        if (isKey(keyCode, 1) && buttonStates[keyCode]) {
+            buttonStates[keyCode] = 0;
+            handler();
         }
     }
 
