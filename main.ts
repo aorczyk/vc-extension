@@ -345,9 +345,11 @@ namespace vcController {
         keyCode: string,
         handler: () => void
     ) {
-        if (this.isKey(keyCode, 1) && !buttonStates[keyCode]) {
-            buttonStates[keyCode] = 1;
-            return handler();
+        return () => {
+            if (isKey(keyCode, 1) && !buttonStates[keyCode]) {
+                buttonStates[keyCode] = 1;
+                handler();
+            }
         }
     }
 
@@ -361,9 +363,11 @@ namespace vcController {
         keyCode: string,
         handler: () => void
     ) {
-        if (this.isKey(keyCode, 1) && buttonStates[keyCode]) {
-            buttonStates[keyCode] = 0;
-            return handler();
+        return () => {
+            if (isKey(keyCode, 1) && buttonStates[keyCode]) {
+                buttonStates[keyCode] = 0;
+                handler();
+            }
         }
     }
 
