@@ -319,20 +319,6 @@ namespace vcController {
     //     }
     // }
 
-    /**
-     * Runs the code inside when the controller connects and sends the setup signal.
-     */
-    //% blockId="vc_setup"
-    //% block="setup"
-    //% weight=50
-    //% requireConfirmation.defl=false
-    export function onVCsetup(
-        // requireConfirmation: boolean,
-        handler: () => void
-    ) {
-        setup = handler;
-    }
-
     let buttonStates: { [key: string]: number } = {}
 
     /**
@@ -340,7 +326,7 @@ namespace vcController {
      */
     //% blockId="vc_button_toggled"
     //% block="button toggled"
-    //% weight=40
+    //% weight=51
     export function buttonToggled(
     ) {
         if (!buttonStates[commandName]) {
@@ -359,7 +345,7 @@ namespace vcController {
     //% blockId="vc_button_toggle_count"
     //% block="button toggle count %toggleMaxCount"
     //% toggleMaxCount.defl=1
-    //% weight=40
+    //% weight=50
     export function buttonToggleCount(
         toggleMaxCount: number = 1,
     ) {
@@ -377,11 +363,25 @@ namespace vcController {
     }
 
     /**
+     * Runs the code inside when the controller connects and sends the setup signal.
+     */
+    //% blockId="vc_setup"
+    //% block="setup"
+    //% weight=41
+    //% requireConfirmation.defl=false
+    export function onVCsetup(
+        // requireConfirmation: boolean,
+        handler: () => void
+    ) {
+        setup = handler;
+    }
+
+    /**
      * Sets the button color in the controller app.
      */
     //% blockId="vc_set_button_color"
     //% block="set button %code color %color label %label"
-    //% weight=38
+    //% weight=40
     //% color.defl=KeyColor.Black
     //% label.defl=''
     export function setButton(
