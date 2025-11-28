@@ -375,7 +375,7 @@ namespace vcController {
      * Sets the button color in the controller app.
      */
     //% blockId="vc_set_button_color"
-    //% block="set button %code color %color"
+    //% block="set button %code color %color label %label"
     //% weight=38
     //% color.defl=KeyColor.Black
     export function setButton(
