@@ -342,7 +342,6 @@ namespace vcController {
     //% block="button toggle"
     //% weight=40
     export function onVCbuttonToggle(
-        keyCode: string,
     ) {
         if (!buttonStates[commandName]) {
             buttonStates[commandName] = 1;
