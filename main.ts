@@ -338,17 +338,37 @@ namespace vcController {
     /**
      * Runs the code inside when the button toggles on.
      */
-    //% blockId="vc_button_toggle_on"
-    //% block="button %keyCode toggle on"
+    //% blockId="vc_button_toggle"
+    //% block="button toggle"
     //% weight=40
-    export function onVCbuttonToggleOn(
+    export function onVCbuttonToggle(
         keyCode: string,
-        handler: () => void
     ) {
-        if (isKey(keyCode, 1) && !buttonStates[keyCode]) {
-            buttonStates[keyCode] = 1;
-            handler();
+        if (!buttonStates[commandName]) {
+            buttonStates[commandName] = 1;
+        } else {
+            buttonStates[commandName] = 0;
         }
+
+        return buttonStates[commandName] == 1;
+    }
+
+    /**
+     * Runs the code inside when the button toggles on.
+     */
+    //% blockId="vc_button_toggle_counter"
+    //% block="button toggle toggleMaxCount"
+    //% weight=40
+    export function onVCbuttonToggleCounter(
+        toggleMaxCount: number = 1,
+    ) {
+        if (buttonStates[commandName] !== undefined && buttonStates[commandName] < toggleMaxCount) {
+            buttonStates[commandName] += 1;
+        } else {
+            buttonStates[commandName] = 0;
+        }
+
+        return buttonStates[commandName];
     }
 
     /**
