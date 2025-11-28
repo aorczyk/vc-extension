@@ -322,11 +322,41 @@ namespace vcController {
     let buttonStates: { [key: string]: number } = {}
 
     /**
+     * Runs the code inside when the controller connects and sends the setup signal.
+     */
+    //% blockId="vc_setup"
+    //% block="setup"
+    //% weight=51
+    //% requireConfirmation.defl=false
+    export function onVCsetup(
+        // requireConfirmation: boolean,
+        handler: () => void
+    ) {
+        setup = handler;
+    }
+
+    /**
+     * Sets the button color in the controller app.
+     */
+    //% blockId="vc_set_button_color"
+    //% block="set button %code color %color label %label"
+    //% weight=50
+    //% color.defl=KeyColor.Black
+    //% label.defl=''
+    export function setButton(
+        code: string,
+        color: KeyColor,
+        label: string | number = ''
+    ) {
+        bluetooth.uartWriteLine('vc;b;' + code + ';1;' + color + ';' + label + ';');
+    }
+
+    /**
      * Returns true if the button toggles on, false if it toggles off.
      */
     //% blockId="vc_button_toggled"
     //% block="button toggled"
-    //% weight=51
+    //% weight=41
     export function buttonToggled(
     ) {
         if (!buttonStates[commandName]) {
@@ -345,7 +375,7 @@ namespace vcController {
     //% blockId="vc_button_toggle_count"
     //% block="button toggle count %toggleMaxCount"
     //% toggleMaxCount.defl=1
-    //% weight=50
+    //% weight=40
     export function buttonToggleCount(
         toggleMaxCount: number = 1,
     ) {
@@ -360,35 +390,5 @@ namespace vcController {
         }
 
         return buttonStates[commandName];
-    }
-
-    /**
-     * Runs the code inside when the controller connects and sends the setup signal.
-     */
-    //% blockId="vc_setup"
-    //% block="setup"
-    //% weight=41
-    //% requireConfirmation.defl=false
-    export function onVCsetup(
-        // requireConfirmation: boolean,
-        handler: () => void
-    ) {
-        setup = handler;
-    }
-
-    /**
-     * Sets the button color in the controller app.
-     */
-    //% blockId="vc_set_button_color"
-    //% block="set button %code color %color label %label"
-    //% weight=40
-    //% color.defl=KeyColor.Black
-    //% label.defl=''
-    export function setButton(
-        code: string,
-        color: KeyColor,
-        label: string | number = ''
-    ) {
-        bluetooth.uartWriteLine('vc;b;' + code + ';1;' + color + ';' + label + ';');
     }
 }
