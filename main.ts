@@ -373,7 +373,7 @@ namespace vcController {
         color?: KeyColor,
         label?: string | number
     ) {
-        bluetooth.uartWriteLine(['vc;b', code, visibility, color || 0, label || '',].join(';'));
+        bluetooth.uartWriteLine(['vc;b', code, visibility, color, label,].join(';'));
     }
 
     /**
