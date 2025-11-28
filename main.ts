@@ -368,7 +368,7 @@ namespace vcController {
             buttonStates[commandName] = 0;
         }
 
-        return buttonStates[commandName];
+        return buttonStates[commandName] || 0;
     }
 
     /**
