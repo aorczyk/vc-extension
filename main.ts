@@ -357,7 +357,7 @@ namespace vcController {
      * Runs the code inside when the button toggles on.
      */
     //% blockId="vc_button_toggle_counter"
-    //% block="button toggle toggleMaxCount"
+    //% block="button toggle %toggleMaxCount"
     //% weight=40
     export function onVCbuttonToggleCounter(
         toggleMaxCount: number = 1,
