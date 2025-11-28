@@ -339,32 +339,14 @@ namespace vcController {
      * Runs the code inside when the button toggles on.
      */
     //% blockId="vc_button_toggle_on"
-    //% block="button %button toggle on"
+    //% block="button %keyCode toggle on"
     //% weight=40
     export function onVCbuttonToggleOn(
         keyCode: string,
         handler: () => void
-    ): () => void {
-        return function() {
-            if (isKey(keyCode, 1) && !buttonStates[keyCode]) {
-                buttonStates[keyCode] = 1;
-                handler();
-            }
-        }
-    }
-
-    /**
-     * Runs the code inside when the button toggles off.
-     */
-    //% blockId="vc_button_toggle_off"
-    //% block="button %button toggle off"
-    //% weight=39
-    export function onVCbuttonToggleOff(
-        keyCode: string,
-        handler: () => void
     ) {
-        if (isKey(keyCode, 1) && buttonStates[keyCode]) {
-            buttonStates[keyCode] = 0;
+        if (isKey(keyCode, 1) && !buttonStates[keyCode]) {
+            buttonStates[keyCode] = 1;
             handler();
         }
     }
@@ -382,6 +364,4 @@ namespace vcController {
     ) {
         bluetooth.uartWriteLine('vc;b;' + code + ';;' + color + ';;');
     }
-
-    
 }
