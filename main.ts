@@ -81,6 +81,7 @@ namespace vcController {
     let commandValue: number;
     let pressedKeys: string[] = [];
     let setup = (commandName: string) => { };
+    let buttonStates: { [key: string]: number } = {}
 
     // let rightSliderValue: number;
     // let leftSliderValue: number;
@@ -191,6 +192,7 @@ namespace vcController {
     //% blockId=vc_is_key
     //% block="button %keyCode %keyState"
     //% weight=89
+    //% group="Buttons"
     export function isKey(keyCode: string, keyState: KeyState) {
         // return commandName == (keyState ? '' : '!') + keyCode.toLowerCase()
         let code = keyCode.toLowerCase();
@@ -213,6 +215,7 @@ namespace vcController {
     //% blockId=vc_key_code_value
     //% block="code of %keyCode button"
     //% weight=87
+    //% group="Buttons"
     export function getKeyCodeValue(keyCode: KeyCode) {
         return KeyCodeLabel[keyCode]
     }
@@ -223,6 +226,7 @@ namespace vcController {
     //% blockId=vc_are_all_keys_released
     //% block="all keys released"
     //% weight=86
+    //% group="Buttons"
     export function areAllKeysReleased() {
         return commandName == 'none'
     }
@@ -233,6 +237,7 @@ namespace vcController {
     //% blockId=vc_is_slider
     //% block="%InputSide slider changed"
     //% weight=79
+    //% group="Inputs"
     export function isSlider(inputSide: InputSide) {
         return commandName == (inputSide == 1 ? 'sr' : 'sl')
     }
@@ -257,6 +262,7 @@ namespace vcController {
     //% blockId=vc_is_joystick
     //% block="%InputSide joystick %JoystickDirection changed"
     //% weight=69
+    //% group="Inputs"
     export function isJoystick(inputSide: InputSide, inputDirection: JoystickDirection) {
         return commandName == (inputSide == 1 ? 'jr' : 'jl') + (inputDirection == 1 ? 'x' : 'y')
     }
@@ -289,6 +295,7 @@ namespace vcController {
     //% blockId=vc_is_orientation
     //% block="orientation %InputOrientaton changed"
     //% weight=67
+    //% group="Inputs"
     export function isOrientation(inputOrient: InputOrientaton) {
         let modes = {
             1: 'ox',
@@ -320,8 +327,6 @@ namespace vcController {
     //     }
     // }
 
-    let buttonStates: { [key: string]: number } = {}
-
     /**
      * Runs the code inside when the controller connects and sends the setup signal.
      */
@@ -329,6 +334,7 @@ namespace vcController {
     //% block="setup"
     //% weight=51
     //% requireConfirmation.defl=false
+    //% group="Setup"
     export function onVCsetup(
         // requireConfirmation: boolean,
         handler: () => void
@@ -359,6 +365,7 @@ namespace vcController {
     //% visibility.defl=KeyVisibility.Visible
     //% color.defl=KeyColor.Black
     //% label.defl=''
+    //% group="Setup"
     export function setButton(
         code: string,
         visibility: KeyVisibility,
@@ -374,6 +381,7 @@ namespace vcController {
     //% blockId="vc_button_toggled"
     //% block="button toggled"
     //% weight=41
+    //% group="Utility"
     export function buttonToggled(
     ) {
         if (!buttonStates[commandName]) {
@@ -393,6 +401,7 @@ namespace vcController {
     //% block="button toggle count %toggleMaxCount"
     //% toggleMaxCount.defl=1
     //% weight=40
+    //% group="Utility"
     export function buttonToggleCount(
         toggleMaxCount: number = 1,
     ) {
