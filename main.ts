@@ -336,7 +336,7 @@ namespace vcController {
     let buttonStates: { [key: string]: number } = {}
 
     /**
-     * Runs the code inside when the button toggles on.
+     * Returns true if the button toggles on, false if it toggles off.
      */
     //% blockId="vc_button_toggle"
     //% block="button toggle"
@@ -353,10 +353,11 @@ namespace vcController {
     }
 
     /**
-     * Runs the code inside when the button toggles on.
+     * Returns the current toggle count for the button (0 to max count).
+     * Each button press increments the counter until it reaches the maximum, then resets to 0.
      */
     //% blockId="vc_button_toggle_counter"
-    //% block="button toggle %toggleMaxCount"
+    //% block="button toggle count %toggleMaxCount"
     //% toggleMaxCount.defl=1
     //% weight=40
     export function onVCbuttonToggleCounter(
