@@ -382,6 +382,6 @@ namespace vcController {
         code: string,
         color: KeyColor,
     ) {
-        bluetooth.uartWriteLine('vc;b;' + code + ';;' + color + ';;');
+        bluetooth.uartWriteLine('vc;b;' + code + ';1;' + color + ';;');
     }
 }
