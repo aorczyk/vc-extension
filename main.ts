@@ -67,6 +67,13 @@ const enum KeyColor {
     Red = 4,
 }
 
+const enum KeyVisibility {
+    //% block="visible"
+    Visible = 1,
+    //% block="hidden"
+    Hidden = 0,
+}
+
 //% color=#485fc7 icon="\uf11b" block="My Controller"
 namespace vcController {
     let latestCommands: { [key: string]: number } = {}
@@ -341,16 +348,19 @@ namespace vcController {
      * Sets the button color in the controller app.
      */
     //% blockId="vc_set_button_color"
-    //% block="set button %code color %color label %label"
+    //% block="set button %code visibility %visibility color %color label %label"
     //% weight=50
+    //% code.defl=''
+    //% visibility.defl=KeyVisibility.Visible
     //% color.defl=KeyColor.Black
     //% label.defl=''
     export function setButton(
         code: string,
+        visibility: KeyVisibility,
         color: KeyColor,
         label: string | number = ''
     ) {
-        bluetooth.uartWriteLine('vc;b;' + code + ';1;' + color + ';' + label + ';');
+        bluetooth.uartWriteLine('vc;b;' + code + ';' + visibility + ';' + color + ';' + label + ';');
     }
 
     /**
