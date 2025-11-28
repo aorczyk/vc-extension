@@ -359,14 +359,14 @@ namespace vcController {
      * @param label optional text or number to display on the button
      */
     //% blockId="vc_set_button_color"
-    //% block="set button %code visibility %visibility || color %color|label %label"
+    //% block="set button $code visibility $visibility || color $color|label $label"
+    //% expandableArgumentMode="enabled"
     //% weight=50
     //% code.defl=''
     //% visibility.defl=KeyVisibility.Visible
     //% color.defl=KeyColor.Black
     //% label.defl=''
     //% group="Setup"
-    //% expandableArgumentMode="enabled"
     export function setButton(
         code: string,
         visibility: KeyVisibility,
