@@ -345,7 +345,12 @@ namespace vcController {
     }
 
     /**
-     * Sets the button color in the controller app.
+     * Configures a button in the controller app.
+     * Use this block to set the button's visibility, color, and display label.
+     * @param code the button code (e.g., "a", "b", "up", "down")
+     * @param visibility whether the button is visible or hidden
+     * @param color the button color
+     * @param label optional text or number to display on the button
      */
     //% blockId="vc_set_button_color"
     //% block="set button %code visibility %visibility color %color label %label"
