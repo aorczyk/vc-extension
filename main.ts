@@ -381,7 +381,8 @@ namespace vcController {
     export function setButton(
         code: string,
         color: KeyColor,
+        label: string = ''
     ) {
-        bluetooth.uartWriteLine('vc;b;' + code + ';1;' + color + ';;');
+        bluetooth.uartWriteLine('vc;b;' + code + ';1;' + color + ';' + label + ';');
     }
 }
