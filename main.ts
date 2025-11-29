@@ -442,7 +442,11 @@ namespace vcController {
             buttonStates[commandName] = 0;
         }
 
-        return buttonStates[commandName];
+        if (toggleMaxCount == 1) {
+            return buttonStates[commandName] == 1;
+        } else {
+            return buttonStates[commandName];
+        }
     }
 
 
