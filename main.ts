@@ -418,4 +418,18 @@ namespace vcController {
 
         return buttonStates[commandName];
     }
+
+
+    /**
+     * Run a motor
+     * @param duration in milliseconds to run the
+     *      motor the alarm sound
+     */
+    //% block="run the motor || for $duration ms"
+    //% duration.shadow=timePicker
+    //% expandableArgumentMode="toggle"
+    //% duration.defl=200
+    export function runMotor(
+        duration?: number) {
+    }
 }
