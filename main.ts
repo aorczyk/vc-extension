@@ -419,6 +419,32 @@ namespace vcController {
         return buttonStates[commandName];
     }
 
+    /**
+     * Returns the current toggle count for the button (0 to max count).
+     * Each button press increments the counter until it reaches the maximum, then resets to 0.
+     */
+    //% blockId="vc_button_toggle_count2"
+    //% block="button toggle || count %toggleMaxCount"
+    //% toggleMaxCount.defl=1
+    //% expandableArgumentMode="toggle"
+    //% weight=40
+    //% group="Utility"
+    export function buttonToggleCount2(
+        toggleMaxCount?: number = 1,
+    ) {
+        if (buttonStates[commandName] == undefined) {
+            buttonStates[commandName] = 0;
+        }
+
+        if (buttonStates[commandName] < toggleMaxCount) {
+            buttonStates[commandName] += 1;
+        } else {
+            buttonStates[commandName] = 0;
+        }
+
+        return buttonStates[commandName];
+    }
+
 
     /**
      * Run a motor
@@ -428,7 +454,7 @@ namespace vcController {
     //% block="run the motor || for $duration ms"
     //% duration.shadow=timePicker
     //% expandableArgumentMode="toggle"
-    //% duration.defl=200
+    //% duration.defl=39
     export function runMotor(
         duration?: number) {
     }
