@@ -29,8 +29,13 @@
  * @param handler - The code to run during setup, typically containing setButton() calls to configure the controller interface
  * 
  * @remarks
- * Use this block to configure your controller's buttons, colors, and layout.
+ * Use this block to configure your controller's buttons, colors, layout, and all other functionalities.
  * The setup is triggered when the controller app connects and requests settings.
+ * 
+ * You can either manually configure the controller interface using available setup blocks (like setButton()), 
+ * or simply paste the complete configuration code exported from the controller settings page on the app's website 
+ * directly into this function. The exported code includes all configured buttons, sliders, joysticks, and other 
+ * controller features.
  * 
  * @example
  * ```typescript
@@ -114,6 +119,13 @@ const enum KeyVisibility {
     Visible = 1,
     //% block="hidden"
     Hidden = 0,
+}
+
+const enum SetupConfirmation {
+    //% block="require confirmation"
+    Require = 1,
+    //% block="no confirmation"
+    NoRequire = 0,
 }
 
 //% color=#485fc7 icon="\uf11b" block="My Controller"
@@ -375,19 +387,27 @@ namespace vcController {
     //% blockId="vc_setup"
     //% block="setup controller|require confirmation %requireConfirmation"
     //% weight=51
-    //% requireConfirmation.defl=true
+    //% requireConfirmation.defl=false
     //% group="Setup"
     export function onVCsetup(
-        requireConfirmation?: boolean,
-        handler: () => void
+        handler: () => void,
+        requireConfirmation?: SetupConfirmation,
     ) {
         setup = (commandName) => {
-            if (commandName == "-v") {
-                bluetooth.uartWriteLine('vc;hasSettings;1;')
-            } else if (commandName == "getSettings") {
-                bluetooth.uartWriteLine('vc;loader;1;')
-                handler()
-                bluetooth.uartWriteLine('vc;loader;0;')
+            if (requireConfirmation) {
+                if (commandName == "-v") {
+                    bluetooth.uartWriteLine('vc;hasSettings;1;')
+                } else if (commandName == "getSettings") {
+                    bluetooth.uartWriteLine('vc;loader;1;')
+                    handler()
+                    bluetooth.uartWriteLine('vc;loader;0;')
+                }
+            } else {
+                if (commandName == "-v") {
+                    bluetooth.uartWriteLine('vc;loader;1;')
+                    handler()
+                    bluetooth.uartWriteLine('vc;loader;0;')
+                }
             }
         };
     }
