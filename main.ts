@@ -387,7 +387,7 @@ namespace vcController {
     //% blockId="vc_setup"
     //% block="setup %requireConfirmation"
     //% weight=51
-    //% requireConfirmation.defl=1
+    //% requireConfirmation.defl=SetupConfirmation.Require
     //% group="Setup"
     export function onVCsetup(
         handler: () => void,
