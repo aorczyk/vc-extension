@@ -385,7 +385,7 @@ namespace vcController {
      * Runs the code inside when the controller connects and sends the setup signal.
      */
     //% blockId="vc_setup"
-    //% block="setup %requireConfirmation"
+    //% block="setup %SetupConfirmation"
     //% weight=51
     //% requireConfirmation.defl=SetupConfirmation.Require
     //% group="Setup"
