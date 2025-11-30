@@ -391,7 +391,7 @@ namespace vcController {
     //% group="Setup"
     export function onVCsetup(
         handler: () => void,
-        requireConfirmation?: SetupConfirmation,
+        requireConfirmation: SetupConfirmation,
     ) {
         setup = (commandName) => {
             if (requireConfirmation) {
