@@ -382,7 +382,7 @@ namespace vcController {
     // }
 
     /**
-     * Runs the code inside when the controller connects and sends the setup signal.
+     * Runs the code inside when the controller connects and sends the setup signal. When option require confirmation is selected, the controller app will wait for confirmation before applying settings.
      */
     //% blockId="vc_setup"
     //% block="setup %SetupConfirmation"
