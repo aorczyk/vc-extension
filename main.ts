@@ -390,8 +390,8 @@ namespace vcController {
     //% requireConfirmation.defl=SetupConfirmation.Require
     //% group="Setup"
     export function onVCsetup(
-        handler: () => void,
         requireConfirmation: SetupConfirmation,
+        handler: () => void,
     ) {
         setup = (commandName) => {
             if (requireConfirmation) {
